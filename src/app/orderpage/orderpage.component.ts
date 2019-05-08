@@ -183,8 +183,7 @@ var config = {
       }}
          const body = {
              orderId:this.orderDetails._id,
-             products:
-                         this.selectedProduct
+             products: this.selectedProduct
              
          }
          // console.log(this.addProductsForm.values)

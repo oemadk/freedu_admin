@@ -64,7 +64,7 @@ private _fbuilder: FormBuilder,
           'Content-Type': 'application/json',
           'authorization': "Bearer" + " " + this.token
       }}
-     this.http.get('http://127.0.0.1:8000/api/v1/all/users', config)
+     this.http.get('http://52.51.146.242/api/v1/all/users', config)
      .subscribe(res=>{
  this.temp = [this.rows];
         this.rows = res['data'];
@@ -80,7 +80,7 @@ private _fbuilder: FormBuilder,
       }}
          const body = JSON.stringify({user_id: id});
          console.log(body);
-        this.http.post('http://127.0.0.1:8000/api/v1/user/verify',body, config)
+        this.http.post('http://52.51.146.242/api/v1/user/verify',body, config)
      .subscribe(res=>{
        
        console.log(res, 'result from post')

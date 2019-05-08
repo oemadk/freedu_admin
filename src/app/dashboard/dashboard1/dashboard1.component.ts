@@ -66,7 +66,7 @@ export class Dashboard1Component {
           'Content-Type': 'application/json',
           'authorization': "Bearer" + " " + this.token
       }}
-     this.http.get('http://127.0.0.1:8000/api/v1/all/users', config)
+     this.http.get('http://52.51.146.242/api/v1/all/users', config)
      .subscribe(res=>{
         this.users = res['data'];
         // console.log(res)

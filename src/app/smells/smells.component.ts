@@ -65,7 +65,7 @@ constructor(private http:HttpClient,private modalService: NgbModal,public toastr
           'Content-Type': 'application/json',
           'authorization': "Bearer" + " " + this.token
       }}
-     this.http.get('http://127.0.0.1:8000/api/v1/articles/', config)
+     this.http.get('http://52.51.146.242/api/v1/articles/', config)
      .subscribe(res=>{
  this.temp = [this.rows];
         this.rows = res['data'];
@@ -190,7 +190,7 @@ close(a , b){
          }
          console.log(body)
 
-        this.http.post('http://127.0.0.1:8000/api/v1/workshop/reservations',body, config)
+        this.http.post('http://52.51.146.242/api/v1/workshop/reservations',body, config)
      .subscribe(res=>{
         this.ReservedUsers = res;
        console.log(res, 'result from post')

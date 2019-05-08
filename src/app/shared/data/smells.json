@@ -1,0 +1,13 @@
+[
+    {
+        "id": "1",
+        "smell": "Jasmine",
+        "status": "Active"
+    },
+    {
+        "id": "2",
+        "smell": "Vanilla",
+        "status": "Active"
+    }
+
+]

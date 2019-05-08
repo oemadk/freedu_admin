@@ -1,0 +1,48 @@
+[
+    {
+        "id": "1",
+        "image": "assets/img/items/1.svg",
+        "item": "T-Shirt",
+        "price": "20EGP",
+        "category": "Clothes", 
+        "service":"Ironing",
+        "status": "Active"
+    },
+    {
+        "id": "2",
+        "image": "assets/img/items/2.svg",
+        "item": "Dress",
+        "price": "20EGP",
+        "category": "Clothes", 
+        "service":"Ironing",
+        "status": "Active"
+    },
+    {
+        "id": "3",
+        "image": "assets/img/items/3.svg",
+        "price": "20EGP",
+        "category": "Clothes", 
+        "service":"Ironing",
+        "item": "Trousers",
+        "status": "Active"
+    },
+    {
+        "id": "4",
+        "image": "assets/img/items/4.svg",
+        "item": "Jacket",
+        "price": "20EGP",
+        "category": "Clothes", 
+        "service":"Ironing",
+        "status": "Active"
+    },
+    {
+        "id": "5",
+        "image": "assets/img/items/5.svg",
+        "item": "Suit",
+        "price": "20EGP",
+        "category": "Clothes", 
+        "service":"Ironing",
+        "status": "Active"
+    }
+
+]

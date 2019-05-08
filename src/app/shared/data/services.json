@@ -1,0 +1,13 @@
+[
+    {
+        "id": "1",
+        "service": "Ironing",
+        "status": "Active"
+    },
+    {
+        "id": "2",
+        "service": "Washing",
+        "status": "Active"
+    }
+
+]

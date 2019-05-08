@@ -1,0 +1,207 @@
+
+
+<!-- Filter Datatable Options Starts -->
+<section id="filter" class="mb-3">
+    <div class="row">
+    <div class="row">
+        <div class="col-6">
+            <!-- <div class="content-header">ITEMS</div> -->
+        </div>
+        <div class="col-6">
+             <div class="content-header" style="float: right;">
+                 <!--                            <button  (click)="addNew(modal2)" type="button" class="btn btn-raised btn-primary">
+                                    <i class="fa fa-plus"></i> Add New Items
+                                </button> -->
+                            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <div class="row">
+
+    	<div class="col-sm-3">
+                                <h4 class="form-section" style="    font-size: 1.1rem;
+"><i class="ft-mail"></i> Choose Category</h4>
+
+              <button style="display: block; width: 100%"  (click)="carpets()" type="button" class="btn btn-raised btn-primary">
+                                    Show Carpets
+            </button>
+
+                          <button style="display: block; width: 100%" (click)="clothes()" type="button" class="btn btn-raised btn-primary">
+                                   Show Clothes
+            </button>
+
+                          <button style="display: block; width: 100%"  (click)="home()" type="button" class="btn btn-raised btn-primary">
+                                    Show Home
+            </button>
+
+            <button style="display: block; width: 100%"   (click)="addNew(modal2)" type="button" class="btn btn-raised btn-primary">
+                                    <i class="fa fa-plus"></i> Add New Items
+                                </button>
+    </div>
+
+
+    	<div class="col-sm-9">
+
+            <input type='text' style='padding:8px;margin:15px auto;width:30%;' placeholder='Type to filter the name column...' (keyup)='updateFilter($event)'
+            />
+            <ngx-datatable  #table class='bootstrap' [columns]="columns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+                [rowHeight]="'auto'" [limit]="10" [rows]='rows' [selected]="selected" [selectionType]="'cell'" (select)="onSelect($event, modal)" >
+            </ngx-datatable>
+
+    	</div>
+    	
+    </div>
+
+
+</section>
+<!-- Filter Datatable Options Ends -->
+
+<ng-template #modal let-modal let-c="close" style="background-color: transparent;">
+<div style="padding: 0px;" class="col-lg-12 col-sm-12 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title" id="basic-layout-colored-form-control">Edit {{selected['0'].name}}'s Order</h4>
+                </div>
+                <div class="card-body">
+                                            <form class="form">
+
+                    <div class="px-3">                      
+
+                            <div class="form-body">
+                                <h4 class="form-section"><i class="ft-info"></i> Edit {{selected['0'].name}}</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <fieldset class="form-group">
+                                            <label>Name</label>
+                                            <p class="form-control-static" id="staticInput">{{selected['0'].name}}</p>
+                                        </fieldset>
+                            
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+
+                                        <fieldset class="form-group">
+                                            <label for="disabledInput">Type</label>
+                                            <p class="form-control-static" id="staticInput">{{selected['0'].type}}</p>
+                                        </fieldset>
+                            
+                                        </div>
+                                    </div>
+                                </div>                                                                                                            
+                            
+                                </div>
+
+                                <div class="form-group">
+                                        <fieldset class="form-group">
+                                            <label for="basicSelect">Status</label>
+                                            <select [(ngModel)]="selectedOption" [ngModelOptions]="{standalone: true}" class="form-control" id="basicSelect">
+                                              <option>Update Order Status</option>
+                                              <option value="active" >Active</option>
+                                              <option value="inactive">In-Active</option>
+                                            </select>
+                                        </fieldset>   
+                                </div>
+
+                            </div>
+
+                            <div class="form-actions right">
+                                <button (click)="c('Close click')"  type="button" class="btn btn-raised btn-warning mr-1">
+                                    <i class="ft-x"></i> Cancel
+                                </button>
+                                <button  (click)="close(selected['0']._id, selectedOption )" type="button" class="btn btn-raised btn-primary">
+                                    <i class="fa fa-check-square-o"></i> Save
+                                </button>
+<!--                                 <button   [routerLink]="['/orderpage', selected['0'].orderNumber  ]" type="button" class="btn btn-raised btn-primary">
+                                    <i class="fa fa-check-square-o"></i> Go To Order
+                                </button> -->
+                            </div>
+                        </form>
+</div>
+                    </div>
+            </div>
+</ng-template>
+
+
+<ng-template #modal2 let-modal let-c="close" style="background-color: transparent;">
+<div style="padding: 0px;" class="col-lg-12 col-sm-12 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title" id="basic-layout-colored-form-control">Add a new Service</h4>
+                </div>
+                <div class="card-body">
+                    <div class="px-3">                      
+
+                        <form class="form" [formGroup]="addServiceForm">
+                            <div class="form-body">
+
+                                <h4 class="form-section"><i class="ft-mail"></i> Item Info</h4>
+
+                                <div class="form-group">
+                                    <label for="userinput5">Item Name</label>
+                                    <input class="form-control border-primary" type="text"  id="userinput5" formControlName="name" >
+                                </div>                              
+
+                                <div class="form-group">
+                                        <fieldset class="form-group">
+                                            <label for="basicSelect">Category</label>
+                                            <select formControlName="category" class="form-control" id="basicSelect">
+                                              <option>Select Category</option>
+                                              <option value="clothes" >Clothes</option>
+                                              <option value="home">Home</option>
+                                              <option value="carpets">Carpets</option>
+                                            </select>
+                                        </fieldset>   
+                                </div>
+    
+
+	<div class="form-group">
+									<label>Washing Price</label>
+									<div class="input-group">
+										<span class="input-group-addon">EGP</span>
+										<input formControlName="washing_price" type="text" class="form-control"  aria-label="Amount (to the nearest dollar)" name="rateperhour">
+										<span class="input-group-addon">.00</span>
+									</div>
+								</div>
+
+
+	<div class="form-group">
+									<label>Ironing Price</label>
+									<div class="input-group">
+										<span class="input-group-addon">EGP</span>
+										<input formControlName="ironing_price" type="text" class="form-control"  aria-label="Amount (to the nearest dollar)" name="rateperhour">
+										<span class="input-group-addon">.00</span>
+									</div>
+								</div>
+
+	<div class="form-group">
+									<label>Full Service Price</label>
+									<div class="input-group">
+										<span class="input-group-addon">EGP</span>
+										<input formControlName="fullService_price" type="text" class="form-control"  aria-label="Amount (to the nearest dollar)" name="rateperhour">
+										<span class="input-group-addon">.00</span>
+									</div>
+								</div>
+                            </div>
+
+
+
+                            <div class="form-actions right">
+                                <button (click)="c('Close click')" type="button" class="btn btn-raised btn-warning mr-1">
+                                    <i class="ft-x"></i> Cancel
+                                </button>
+                                <button  (click)="addService(addServiceForm)" type="button" class="btn btn-raised btn-primary">
+                                    <i class="fa fa-check-square-o"></i> Save
+                                </button>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</ng-template>
+

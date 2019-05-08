@@ -1,0 +1,167 @@
+
+
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<div style="text-align: center;">
+						<button (click)="addNew(modal2)" type="button" class="btn btn-raised btn-raised btn-primary">
+									<i class="fa fa-check-square-o"></i> Add Package
+								</button>
+							</div>
+
+
+		</div>
+	</div>
+
+
+		<div class="row">
+        <div class="col-sm-4" *ngFor="let package of packages">
+          <div class="snip1214" >
+  <div class="plan">
+    <h3 class="plan-title">
+      {{package.name}}
+    </h3>
+    <div class="plan-cost"><span class="plan-price">{{package.amount}}EGP</span><span class="plan-type">/ Monthly</span></div>
+    <ul class="plan-features">
+      <li><i class="ion-checkmark"> </i>{{package.carpets}} Carpets</li>
+      <li><i class="ion-checkmark"> </i>{{package.homeItems}} Home Items</li>
+      <li><i class="ion-checkmark"> </i>{{package.clothes}} Clothes</li>
+    </ul>
+    <div class="plan-select"><a (click)="onSelect(package, modal)">Edit Plan</a></div>
+  </div>
+</div>
+
+        </div>      
+    </div>
+
+
+
+<!--the form of edit package-->
+
+<ng-template #modal let-modal let-c="close" style="background-color: transparent;">
+<div style="padding: 0px;" class="col-lg-12 col-sm-12 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title" id="basic-layout-colored-form-control">Edit Package</h4>
+                </div>
+                <div class="card-body">
+                  <!--Error Fix-->
+                                      <div class="px-3">                      
+
+        <form class="form" [formGroup]="addPackageForm">
+                            <div class="form-body">
+
+                                <h4 class="form-section"><i class="ft-mail"></i> Package Info</h4>
+
+                                <div class="form-group">
+                                    <label for="userinput5">Package Name</label>
+                                    <input placeholder="{{nowEditing.name}}" class="form-control border-primary" type="text"  id="userinput5" formControlName="name" >
+                                </div>                              
+
+                                <div class="form-group">
+                                    <label for="userinput5">Package Price</label>
+                                    <input placeholder="{{nowEditing.amount}}"  class="form-control border-primary" type="email"  id="userinput5" formControlName="amount" >
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="userinput5">Amount of Clothes included in package</label>
+                                    <input placeholder="{{nowEditing.clothes}}" class="form-control border-primary" type="number"  id="userinput5" formControlName="clothes" >
+                                </div>                              
+
+                                <div class="form-group">
+                                    <label for="userinput5">Amount of Home Items included in package</label>
+                                    <input placeholder="{{nowEditing.homeItems}}" class="form-control border-primary" type="number"  id="userinput5" formControlName="homeItems" >
+                                </div>                              
+
+                                <div class="form-group">
+                                    <label for="userinput5">Amount of Carpets included in package</label>
+                                    <input placeholder="{{nowEditing.carpets}}" class="form-control border-primary" type="number"  id="userinput5" formControlName="carpets" >
+                                </div>                              
+
+                                    <button (click)="deletePackage(nowEditing._id)" type="button" class="btn btn-raised btn-warning mr-1">
+                                    <i class="ft-x"></i> Delete Package
+                                </button>
+
+
+                            </div>
+
+                            <div class="form-actions right">
+                                <button (click)="c('Close click')" type="button" class="btn btn-raised btn-warning mr-1">
+                                    <i class="ft-x"></i> Cancel
+                                </button>
+                                <button  (click)="editPackage(addPackageForm)" type="button" class="btn btn-raised btn-primary">
+                                    <i class="fa fa-check-square-o"></i> Save
+                                </button>
+
+                            </div>
+      
+                        </form>
+                      </div>
+</div>
+                    </div>
+            </div>
+</ng-template>
+
+
+
+
+<ng-template #modal2 let-modal let-c="close" style="background-color: transparent;">
+<div style="padding: 0px;" class="col-lg-12 col-sm-12 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title" id="basic-layout-colored-form-control">Add a new Package</h4>
+                </div>
+                <div class="card-body">
+                    <div class="px-3">                      
+
+                        <form class="form" [formGroup]="addPackageForm">
+                            <div class="form-body">
+
+                                <h4 class="form-section"><i class="ft-mail"></i> Package Info</h4>
+
+                                <div class="form-group">
+                                    <label for="userinput5">Package Name</label>
+                                    <input class="form-control border-primary" type="text"  id="userinput5" formControlName="name" >
+                                </div>                              
+
+                                <div class="form-group">
+                                    <label for="userinput5">Package Price</label>
+                                    <input  class="form-control border-primary" type="email"  id="userinput5" formControlName="amount" >
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="userinput5">Amount of Clothes included in package</label>
+                                    <input class="form-control border-primary" type="number"  id="userinput5" formControlName="clothes" >
+                                </div>                              
+
+                                <div class="form-group">
+                                    <label for="userinput5">Amount of Home Items included in package</label>
+                                    <input class="form-control border-primary" type="number"  id="userinput5" formControlName="homeItems" >
+                                </div>                              
+
+                                <div class="form-group">
+                                    <label for="userinput5">Amount of Carpets included in package</label>
+                                    <input  class="form-control border-primary" type="number"  id="userinput5" formControlName="carpets" >
+                                </div>                              
+
+    
+
+
+                            </div>
+
+                            <div class="form-actions right">
+                                <button (click)="c('Close click')" type="button" class="btn btn-raised btn-warning mr-1">
+                                    <i class="ft-x"></i> Cancel
+                                </button>
+                                <button (click)="addPackage(addPackageForm)" type="button" class="btn btn-raised btn-primary">
+                                    <i class="fa fa-check-square-o"></i> Save
+                                </button>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</ng-template>
+

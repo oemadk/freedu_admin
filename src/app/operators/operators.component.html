@@ -1,0 +1,96 @@
+<!-- Filter Datatable Options Starts -->
+<section id="filter" class="mb-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="content-header">Filter Option</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <input type='text' style='padding:8px;margin:15px auto;width:30%;' placeholder='Type to filter the name column...' (keyup)='updateFilter($event)'
+            />
+            <ngx-datatable  #table class='bootstrap' [columns]="columns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+                [rowHeight]="'auto'" [limit]="10" [rows]='rows' [selected]="selected" [selectionType]="'cell'" (select)="onSelect($event, modal)" >
+            </ngx-datatable>
+        </div>
+    </div>
+</section>
+<!-- Filter Datatable Options Ends -->
+
+<ng-template #modal let-modal let-c="close" style="background-color: transparent;">
+<div style="padding: 0px;" class="col-lg-12 col-sm-12 col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<h4 class="card-title" id="basic-layout-colored-form-control">Edit {{selected['0'].name}}'s' Data</h4>
+				</div>
+				<div class="card-body">
+					<div class="px-3">						
+
+						<form class="form">
+							<div class="form-body">
+								<h4 class="form-section"><i class="ft-info"></i> About User</h4>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="userinput1">First Name</label>
+											<input type="text" id="userinput1" class="form-control border-primary"  name="name" placeholder="{{selected['0'].name}}">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="userinput2">Last Name</label>
+											<input type="text" id="userinput2" class="form-control border-primary"  name="company" placeholder="{{selected['0'].name}}">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="userinput3">Username</label>
+											<input type="text" id="userinput3" class="form-control border-primary"  name="username" placeholder="{{selected['0'].name}}">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="userinput4">Nick Name</label>
+											<input type="text" id="userinput4" class="form-control border-primary"  name="nickname" placeholder="{{selected['0'].name}}">
+										</div>
+									</div>
+								</div>
+
+								<h4 class="form-section"><i class="ft-mail"></i> Contact Info & Bio</h4>
+
+								<div class="form-group">
+									<label for="userinput5">Email</label>
+									<input class="form-control border-primary" type="email"  id="userinput5" placeholder="{{selected['0'].email}}">
+								</div>
+
+							
+								<div class="form-group">
+									<label>Contact Number</label>
+									<input class="form-control border-primary" id="userinput7" type="tel" placeholder="{{selected['0'].number}}">
+								</div>
+
+								<div class="form-group">
+									<label for="userinput8">Bio</label>
+									<textarea id="userinput8" rows="5" class="form-control border-primary" name="bio" placeholder=""></textarea>
+								</div>
+
+							</div>
+
+							<div class="form-actions right">
+								<button (click)="close()" type="button" class="btn btn-raised btn-warning mr-1">
+									<i class="ft-x"></i> Cancel
+								</button>
+								<button  (click)="c('Close click')" type="button" class="btn btn-raised btn-primary">
+									<i class="fa fa-check-square-o"></i> Save
+								</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+</ng-template>
+
